@@ -796,6 +796,434 @@ print(info)'''
 
 
 
+'''import math
+d = {'science_marks':pd.Series([22,55]),
+     'english_marks':pd.Series([89,87])}
+df = pd.DataFrame(d)
+print(df)
+r = df.apply(np.mean,axis=0)
+print(r)'''
+
+
+'''data = pd.read_csv('C:/Users/shaik.ahammadali/Downloads/project_data.csv')'''
+#print(data.shape)
+#print(data.info())
+#r = data['marital_status'].unique()
+#print(r)
+#data['marital_status'] = data['marital_status'].replace('Widow','Widowed')
+#print(data.to_string())
+
+#d = round(data['educational_level'].value_counts(normalize=True),2)
+#print(d)
+
+#print(data.isnull())
+#print(data.duplicated().sum())
+#print(data['educational_level'].isnull().sum())
+#subset_data = data[['year_of_birth ','educational_level','annual_income']]
+#print(subset_data)
+
+'''r = data[data["educational_level"] == 'Master']
+print(r)'''
+
+'''s = data.loc[:6,['educational_level','recency']] # specify the rows and columns as labels.
+print(s)'''
+
+'''s = data.iloc[:6,[2,6]]
+print(s)'''
+
+'''d = data.loc[data['marital_status'].isin(['Single','Divorced'])]
+print(d)'''
+
+'''d = data.iloc[list((data.annual_income > 75000) & (data.educational_level == 'Master')), :,]
+print(d)'''
+
+'''s = data.set_index('customer_id')
+print(s)'''
+
+'''d = data.sort_values(by=['year_of_birth '],ascending=False)
+print(d)'''
+
+'''data['sum_purchases'] = data.online_purchases + data.store_purchases
+print(data.to_string())'''
+
+'''#create an income category (low, meduim, high) based on the income variable
+income_categories = ['Low','Medium','High'] # Set the categories
+bins = [0,75000,120000,600000] # set the income boundaries
+cats = pd.cut(data['annual_income'],bins,labels=income_categories)
+# apply the pd.cut method
+data['Income_Category'] = cats # Assign the categories based on income
+print(data[['annual_income','Income_Category']])'''
+
+'''from datetime import date
+#we can change the datatype of purchase_date to datetime and year_birth to integer
+data['purchased_date'] = pd.to_datetime(data['purchased_date'])
+data['year_of_birth '] = data['year_of_birth '].astype(int)
+#find out the age of customers based on the current year
+today = date.today()
+year = int(today.year)
+data['Age'] = year-data['year_of_birth ']
+print(data['Age'])'''
+''' 
+a_list = list("abcdefg")
+numpy_array = np.arange(1,10)
+dictionary = {'A':0,'B':1,'C':2,'D':3}
+
+df = pd.Series(a_list)
+df1 = pd.Series(numpy_array)
+df2 = pd.Series(dictionary)
+print(df)
+print(df1)
+print(df2)
+'''
+'''ser1 = pd.Series(list('abcdefghijklmnopqrstuvwxyz'))
+ser2 = pd.Series(np.arange(26))
+#df = pd.DataFrame({'col1':ser1,'col2':ser2})
+df = pd.concat([ser1,ser2],axis=1)
+print(df)'''
+
+'''ser1 = pd.Series([1,2,3,4,5])
+ser2 = pd.Series([4,5,6,7,8])
+#d = ser1[~ser1.isin(ser2)]
+#print(d)
+a_not_b = ser1[~ser1.isin(ser2)]
+b_not_a = ser2[~ser2.isin(ser1)]
+df = pd.concat([a_not_b,b_not_a])
+print(df)'''
+
+'''state = np.random.RandomState(100)
+ser = pd.Series(state.normal(10,5,25))
+print(ser.describe())'''
+
+
+'''ser = pd.Series(np.take(list('abcdefgh'),np.random.randint(8,size=30)))
+print(ser.value_counts())'''
+
+'''ser = pd.Series(np.random.randint(1,10,35))
+#print(ser)
+
+pd.DataFrame(np.array(ser).reshape(7,5))'''
+
+
+'''data_series = pd.date_range(start='05-01-2021', end='05-12-2021')
+print(data_series)'''
+
+
+'''series = pd.Series([2,4,6,8,10])
+modified_array = series.apply(lambda x: x/2)
+print(modified_array)'''
+
+
+'''data = {'Name':['Ramu','Somu','Bheem','Joseph','Jani'],
+        'Age':[23,36,58,48,98]}
+df = pd.DataFrame(data)
+print(df)'''
+
+# 2-D list to datafrmae conversion
+'''lists = [[2,'Vishal',22],
+         [1,'Kaushal',25],
+         [1,'Aman',24]]
+dataframe = pd.DataFrame(lists,columns=['id','name','age'])
+print(dataframe)'''
+
+'''dataframe = pd.read_csv('data.csv')
+print(dataframe)'''
+
+'''dataframe = pd.read_csv('data.csv')
+print(dataframe)
+d = dataframe.set_index('Duration')
+print(d)'''
+
+'''dataframe = pd.read_csv('data.csv')
+print(dataframe)
+df_sorted = dataframe.sort_index()
+print(df_sorted)'''
+
+'''dataframe = pd.read_csv('data.csv')
+print(dataframe)
+df_sorted = dataframe.sort_values(by= ["Duration"])
+print(df_sorted)'''
+
+#dataframe = pd.read_csv('data.csv')
+#print(dataframe)
+'''d = dataframe.set_index('Duration')
+#print(d)
+d1 = dataframe.reset_index()
+print(d1)'''
+
+
+'''o = dataframe['Duration']
+print(o)'''
+
+'''o = dataframe.iloc[:,1]
+print(o)'''
+
+'''o = dataframe.loc[:,'Duration']
+print(o)'''
+'''o = dataframe.iloc[[0,1],:]
+print(o)
+
+o = dataframe.loc[[0,1],:]
+print(o)'''
+# selecting people with Duration greater than or equal to 65
+'''dataframe_condition = dataframe.loc[dataframe.Duration >=65]
+print(dataframe_condition)'''
+
+'''avg_value= dataframe.groupby('Duration').mean()
+print(avg_value)'''
+
+
+'''dataframe_null = dataframe.fillna(500)
+print(dataframe_null.to_string())'''
+
+'''d1 = pd.DataFrame({'Name':['Ahammad','Ali','Subhani','Mahboob'],
+                   'Age':[23,24,25,50],
+                   'Salary':[12000,34000,45000,50000]})
+
+d2 = pd.DataFrame({'Name':['Raheem','Meera','Subhani','Mahboob'],
+                   'Age':[23,24,80,50],
+                   'Salary':[12000,34000,45000,50000]})
+
+d3 = pd.merge(d1,d2,how='inner',on='Age')
+print(d3)
+#print(d3.info())
+print(d3.describe())'''
+
+
+#print(pd.__version__)
+
+'''mylist = list("abcedfghijklmnopqrstuvwxyz")
+myarr = np.arange(26)
+mydict = dict(zip(mylist,myarr))
+se = pd.Series(mydict)
+print(se)'''
+
+'''ser1 = pd.Series(list('abcedfghijklmnopqrstuvwxyz'))
+ser2 = pd.Series(np.arange(26))
+df = pd.DataFrame({'ser1':ser1,'ser2':ser2})
+print(df)'''
+
+'''ser = pd.Series(list('abcedfghijklmnopqrstuvwxyz'))
+#print(ser)
+ser.name='alphabets'
+print(ser)'''
+
+
+'''ser1 = pd.Series([1, 2, 3, 4, 5])
+ser2 = pd.Series([4, 5, 6, 7, 8])
+d = ser1[~ser1.isin(ser2)]
+print(d)
+d1 = ser2[~ser2.isin(ser1)]
+print(d1)'''
+
+'''d = pd.DataFrame({'Name':['A','B','C','D','E'],'Age':[1,2,3,4,5]})
+print(d.describe())'''
+
+
+'''ser1 = pd.Series(range(5))
+ser2 = pd.Series(list('abcde'))
+
+# vertical
+d = ser1.append(ser2)
+print(d)
+d1 = pd.concat([ser1,ser2],axis=1)
+print(d1)'''
+
+#data = pd.read_csv('data.csv')
+'''print(data.head())
+print(data.tail())'''
+
+'''df = data.fillna('1000')
+print(df.to_string())'''
+
+#df = data['Duration'][data.Duration == data['Duration'].max()]
+#print(df)
+
+'''df = data['Duration'][data.Duration == 60]
+print(df)'''
+
+'''df = data['Duration'].value_counts()
+print(df)'''
+
+'''df = data.groupby('Duration')
+dd = df['Duration','Pulse'].max()
+print(dd)'''
+
+'''df = data.groupby('Duration')
+mdf = df['Pulse'].mean()
+print(mdf)'''
+
+'''data = pd.read_csv('data.csv')
+df = data.sort_values(by=['Pulse'],ascending= False)
+print(df.head(5))'''
+
+
+GermanCars = {'Company': ['Ford', 'Mercedes', 'BMV', 'Audi'], 'Price': [23845, 171995, 135925 , 71400]}
+japaneseCars = {'Company': ['Toyota', 'Honda', 'Nissan', 'Mitsubishi '], 'Price': [29995, 23600, 61500 , 58900]}
+g1 = pd.DataFrame(GermanCars)
+j1 = pd.DataFrame(japaneseCars)
+
+df = pd.concat([g1,j1],keys=["Germany","Japan"])
+#print(df)
+
+'''Car_Price = {'Company': ['Toyota', 'Honda', 'BMV', 'Audi'], 'Price': [23845, 17995, 135925 , 71400]}
+car_Horsepower = {'Company': ['Toyota', 'Honda', 'BMV', 'Audi'], 'horsepower': [141, 80, 182 , 160]}
+c1 = pd.DataFrame(Car_Price)
+c2 = pd.DataFrame(car_Horsepower)
+d = c1.merge(c2,on='Company')
+#df = pd.concat([df,d])
+print(d)'''
+
+#print(pd.__version__)
+
+'''mylist = list('abcedfghijklmnopqrstuvwxyz')
+myaar = np.arange(26)
+mydict = dict(zip(mylist,myaar))
+#print(pd.Series(mylist))
+#print(pd.Series(myaar))
+print(pd.Series(mydict))'''
+
+'''ser = pd.Series(list('abcdefghijklmnopqrstuvwxyz'))
+pos = [0, 4, 8, 14, 20]
+
+# Solution
+s = ser.take(pos)
+print(s)'''
+
+'''Create Test Objects
+
+pd.DataFrame(np.random.rand(20,5))	5 columns and 20 rows of random floats
+pd.Series(my_list)	Create a series from an iterable my_list
+df.index = pd.date_range('1900/1/30', periods=df.shape[0])	Add a date index
+Viewing/Inspecting Data
+
+df.head(n)	First n rows of the DataFrame
+df.tail(n)	Last n rows of the DataFrame
+df.shape	Number of rows and columns
+df.info()	Index, Datatype and Memory information
+df.describe()	Summary statistics for numerical columns
+s.value_counts(dropna=False)	View unique values and counts
+df.apply(pd.Series.value_counts)	Unique values and counts for all columns
+Selection
+
+df[col]	Returns column with label col as Series
+df[[col1, col2]]	Returns columns as a new DataFrame
+s.iloc[0]	Selection by position
+s.loc['index_one']	Selection by index
+df.iloc[0,:]	First row
+df.iloc[0,0]	First element of first column
+Data Cleaning
+
+df.columns = ['a','b','c']	Rename columns
+pd.isnull()	Checks for null Values, Returns Boolean Arrray
+pd.notnull()	Opposite of pd.isnull()
+df.dropna()	Drop all rows that contain null values
+df.dropna(axis=1)	Drop all columns that contain null values
+df.dropna(axis=1,thresh=n)	Drop all rows have have less than n non null values
+df.fillna(x)	Replace all null values with x
+s.fillna(s.mean())	Replace all null values with the mean
+s.astype(float)	Convert the datatype of the series to float
+s.replace(1,'one')	Replace all values equal to 1 with 'one'
+s.replace([2,3],['two', 'three'])	Replace all 2 with 'two' and 3 with 'three'
+df.rename(columns=lambda x: x + 1)	Mass renaming of columns
+df.rename(columns={'old_name': 'new_ name'})	Selective renaming
+df.set_index('column_one')	Change the index
+df.rename(index=lambda x: x + 1)	Mass renaming of index
+Filter, Sort, and Groupby
+
+df[df[col] > 0.6]	Rows where the column col is greater than 0.6
+df[(df[col] > 0.6) & (df[col] < 0.8)]	Rows where 0.8 > col > 0.6
+df.sort_values(col1)	Sort values by col1 in ascending order
+df.sort_values(col2,ascending=False)	Sort values by col2 in descending order.5
+df.sort_values([col1,col2],ascending=[True,False])	Sort values by col1 in ascending order then col2 in descending order
+df.groupby(col)	Returns a groupby object for values from one column
+df.groupby([col1,col2])	Returns groupby object for values from multiple columns
+df.groupby(col1)[col2]	Returns the mean of the values in col2, grouped by the values in col1
+df.pivot_table(index=col1,values=[col2,col3],aggfunc=mean)	Create a pivot table that groups by col1 and calculates the mean of col2 and col3
+df.groupby(col1).agg(np.mean)	Find the average across all columns for every unique col1 group
+df.apply(np.mean)	Apply the function np.mean() across each column
+nf.apply(np.max,axis=1)	Apply the function np.max() across each row
+Join/Combine
+
+df1.append(df2)	Add the rows in df1 to the end of df2 (columns should be identical)
+pd.concat([df1, df2],axis=1)	Add the columns in df1 to the end of df2 (rows should be identical)
+df1.join(df2,on=col1, how='inner')	SQL-style join the columns in df1 with the columns on df2 where the rows for col have identical values. The 'how' can be 'left', 'right', 'outer' or 'inner'
+Statistics
+
+df.describe()	Summary statistics for numerical columns
+df.mean()	Returns the mean of all columns
+df.corr()	Returns the correlation between columns in a DataFrame
+df.count()	Returns the number of non-null values in each DataFrame column
+df.max()	Returns the highest value in each column
+df.min()	Returns the lowest value in each column
+df.median()	Returns the median of each column
+df.std()	Returns the standard deviation of each column
+Importing Data
+
+pd.read_csv(filename)	From a CSV file
+pd.read_table(filename)	From a delimited text file (like TSV)
+pd.read_excel(filename)	From an Excel file
+pd.read_sql(query, connection_object)	Read from a SQL table/database
+pd.read_json(json_string)	Read from a JSON formatted string, URL or file.
+pd.read_html(url)	Parses an html URL, string or file and extracts tables to a list of dataframes
+pd.read_clipboard()	Takes the contents of your clipboard and passes it to read_table()
+pd.DataFrame(dict)	From a dict, keys for columns names, values for data as lists
+Exporting Data
+
+df.to_csv(filename)	Write to a CSV file
+df.to_excel(filename)	Write to an Excel file
+df.to_sql(table_name, connection_object)	Write to a SQL table
+df.to_json(filename)	Write to a file in JSON format'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
